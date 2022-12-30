@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+              <hr class="featurette-divider">
+<div class="container">
+     <div class="container">
+         <img src="{{ profileemloyee.image.url }}" width="200" height="200" style="border-radius: 10px 10px">
+            <div class="row call_to-btn">
+                <h4 class="featurette-heading fw-normal lh-1">Псевдоним {{ profileemloyee.name }}.</h4>
+                <h5 class="text-muted">Email {{ profileemloyee.user }}</h5>
+                <h5>Навыки</h5>
+                {% for skill in skills %}
+                <a class="text-muted"> {{ skill|upper }},</a>
+                {% endfor %}
+                  <h5>График</h5>
+                {% for x in schedule %}
+                <a class="text-muted"> {{ x }},</a>
+                {% endfor %}
+      </div>
+    <main class="container" style="border-radius: 50px 10px">
+              <hr class="featurette-divider">
+      <div class="col-md-15 row g-0">
+        <div class="row call_to-btn">
+            <p class="lead"><a>Опыт работы: <br></a> {{ profileemloyee.description }}</p>
+            <p class="lead"><a>Описание: <br></a> {{ profileemloyee.content }}</p>
+            <p class="lead"><a>Достижения: <br></a> {{ profileemloyee.achievements }}</p>
+      </div>
+      </div>
+    </main>
+</div>
+    </div>
+{% endblock %}
+

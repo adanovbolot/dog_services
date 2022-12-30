@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="hero-container container">
+    <div class="col-md-15 row g-0">
+        <div class="row">
+            <form id="form-container" action="ProfileEmployeeList" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <br>
+                <fieldset>
+                    {{ profile_skills.management_form }}
+                    {{ profile_skills.non_form_errors }}
+                    {% for form in profile_skills %}
+                    <div class="skills-form">
+                        {{ form.as_p }}
+                    </div>
+                    {% endfor %}
+                    <button id="add-form" class="btn btn-primary" type="button" name="submit">Добавить навык</button>
+                </fieldset>
+                <button class="btn btn-primary" type="submit" name="submit">Добавить</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

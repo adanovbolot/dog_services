@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+      <div class="hero-container container call_to-btn">
+        <div class="row">
+                               {% if user.type == 'CLIENT' %}
+            <h5 class="navbar-text mr-2">Пользователь {{ user|upper }}</h5>
+                                {% endif %}
+          <h2>Безопасный выгул собак в Бишкеке</h2>
+          <p>
+            Наши исполнители — ответственные и опытные. Сдать собаку на передержку или выгул им можно без опасений.
+          </p>
+          <div class="hero_btn-continer ">
+            <a href="{% url 'ProfileEmployeeList' %}" class="call_to-btn btn_white-border">
+                  Выбрать Человека Для Выгула Собаки
+            </a>
+            <p></p>
+          </div>
+          <div class="hero_btn-continer">
+               <a href="{% url 'contentemployee' %}" class="call_to-btn btn_white-border">
+                  Хочешь Быть Частью Нашей Команды?
+                   {% if user.type == 'CLIENT' %}
+           <a href="{% url 'ProfileClientCreateView' %}" class="call_to-btn">Добавьте свои данные чтоб человек больше понимал</a>
+                {% endif %}
+            </a>
+          </div>
+        </div>
+        <div class="hero_img-container">
+          <div>
+            <img src="{% static 'images/pngwing.com.png' %}" alt="" class="img-fluid">
+          </div>
+        </div>
+      </div>
+{% endblock %}
+

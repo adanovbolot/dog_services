@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="hero-container container">
+    <div class="col-md-15 row g-0">
+        <div class="row call_to-btn">
+            <form enctype="multipart/form-data" method="post" action="{% url 'ProfileClientCreateView' %}">
+                                <h3>Добавьте свои данные</h3>
+                {% csrf_token %}
+                <hr class="featurette-divider">
+                                <h5>Имя</h5>
+                {{ form.name }}
+                                <hr class="featurette-divider">
+                                <h5>Имя вашей собаки</h5>
+                {{ form.name_dog }}
+                                <hr class="featurette-divider">
+                                <h5>Ваше фотография</h5>
+                {{ form.image }}
+                                <h5>Фотография вашей собаки</h5>
+                {{ form.image_dog }}
+                                <hr class="featurette-divider">
+                                <h5>Порода собаки</h5>
+                {{ form.title }}
+                                <hr class="featurette-divider">
+                                <h5>Опишите вашу собаки</h5>
+                {{ form.content }}
+                                <hr class="featurette-divider">
+                <button class="call_to-btn" type="submit" name="submit">Добавить</button>
+            </form>
+        </div>
+        <img src="{% static 'images/kisspng.png' %}" width="560" height="500" style="border-radius: 10px 10px">
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main>
+  <div class="container py-4">
+       <div class="row align-items-md-stretch">
+      <div class="col-md-15">
+        <div class="h-100 p-5 bg-light border rounded-3">
+          {% for em in contentemployee %}
+          <h1>{{ em.title }}</h1>
+          <p>{{ em.content }}</p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="p-5 mb-4 bg-light rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Собака - первый друг человека.</h1>
+        <h1 class="display-5 fw-bold">Собака - это не игрушка, а большая ответственность</h1>
+        <p class="col-md-8 fs-4">Помните это всегда!!!</p>
+         <div class="call_to-btn btn_white-border">
+           {% if user.is_authenticated %}
+                {% if user.type == 'EMPLOYEE' %}
+           <span class="">{{ user.type }}</span>
+           <a href="{% url 'profile_list' %}" class="call_to-btn btn_white-border">Добавить данные вашего профиля</a>
+           <span class="navbar-text mr-2">{{ user|upper }}</span>
+    <a href="{% url 'Employee_Signout' %}" class="call_to-btn btn_white-border">Выход</a>
+                {% endif %}
+           {% else %}
+    <a href="{% url 'Employee_Signin' %}" class="call_to-btn btn_white-border">Вход</a>
+    <a href="{% url 'Employee_Signup' %}" class="call_to-btn btn_white-border">Регистрация</a>
+           {% endif %}
+          </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
